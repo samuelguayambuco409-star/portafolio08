@@ -1,0 +1,290 @@
+:root {
+    --bg-dark: #000000; /* Negro puro */
+    --card-bg: rgba(255, 255, 255, 0.02);
+    --accent: #ff6b00; /* Naranja vibrante */
+    --text-main: #f8fafc;
+    --text-dim: #94a3b8;
+    --gradient: linear-gradient(135deg, #ff6b00 0%, #ff9e00 100%);
+}
+
+* {
+    margin: 0; padding: 0; box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
+    text-decoration: none;
+}
+
+a { color: white; }
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    overflow-x: hidden;
+}
+
+/* Fondo de puntos naranja */
+.bg-dots {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: radial-gradient(var(--accent) 0.5px, transparent 0.5px);
+    background-size: 30px 30px;
+    opacity: 0.05; z-index: -1;
+}
+
+/* Navegación */
+.navbar {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 20px 5%;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(15px);
+    position: fixed; width: 100%; top: 0; z-index: 1000;
+    border-bottom: 1px solid rgba(255, 107, 0, 0.1);
+}
+
+.logo { font-size: 1.8rem; font-weight: 800; }
+.logo span { color: var(--accent); text-shadow: 0 0 10px rgba(255, 107, 0, 0.3); }
+
+.nav-links { list-style: none; display: flex; align-items: center; }
+.nav-links a {
+    text-decoration: none; color: var(--text-dim);
+    margin: 0 15px; font-size: 0.9rem; transition: 0.3s;
+}
+.nav-links a:hover { color: var(--accent); }
+
+.btn-cta {
+    background: var(--gradient);
+    color: white !important;
+    padding: 8px 20px; border-radius: 50px; font-weight: 600;
+    box-shadow: 0 4px 15px rgba(255, 107, 0, 0.2);
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh; display: flex; align-items: center; padding: 0 8%;
+    background: radial-gradient(circle at 10% 20%, rgba(255, 107, 0, 0.1), transparent 40%);
+}
+
+.hero-content {
+    display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 40px; width: 100%;
+}
+
+.badge {
+    color: var(--accent); background: rgba(255, 107, 0, 0.1);
+    padding: 5px 15px; border-radius: 20px; font-size: 0.75rem;
+    border: 1px solid rgba(255, 107, 0, 0.3);
+}
+
+.hero h1 { font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.1; margin: 20px 0; font-weight: 800; }
+.gradient-text {
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.main-btn {
+    background: var(--gradient); color: white; text-decoration: none;
+    padding: 15px 30px; border-radius: 8px; font-weight: 600;
+    display: inline-block; transition: 0.3s;
+}
+.main-btn:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(255, 107, 0, 0.4); }
+
+/* --- Tarjeta Flotante con Iconos 3D --- */
+.floating-card {
+    width: 600px; height: 160px;
+    background: rgba(0, 0, 0, 0.03);
+   
+    
+    display: flex; align-items: center; justify-content: center;
+    backdrop-filter: blur(60px);
+    animation: float 2s ease-in-out infinite;
+    margin-left: auto;
+}
+
+.inner-content-3d {
+    display: flex; justify-content: space-around; align-items: center; width: 100%;
+}
+
+.icon-3d {
+    width: 200px; height: auto;
+    filter: drop-shadow(0 0 15px rgba(255, 107, 0, 0.2));
+    transition: 0.4s;
+}
+
+.floating-card:hover .icon-3d { transform: scale(1.1) rotate(5deg); }
+
+@keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-25px) rotate(2deg); }
+}
+
+/* Sección de Trabajos (Grid) */
+.work-section { padding: 50px 5%; }
+.grid-layout { 
+    display: grid; 
+    grid-template-columns: repeat(6, 1fr); 
+    gap: 25px; 
+    padding: 20px 0;
+}
+
+/* Contenedor de la imagen */
+.image-wrapper {
+    width: 100%;
+    height: 250px; /* Ajusté la altura para que sea más manejable */
+    overflow: hidden; /* ESTO ES CLAVE: evita que la imagen salga del cuadro */
+    position: relative;
+    border-radius: 12px 12px 0 0;
+}
+
+.card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Mantiene la proporción de la imagen */
+    transition: transform 0.8s ease;
+}
+
+/* Efecto al pasar el mouse */
+.card:hover .card-image {
+    transform: scale(1.5); /* Zoom suave sin desordenar */
+}
+
+/* Responsivo para tablets y celulares */
+@media (max-width: 1024px) {
+    .grid-layout { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+    .grid-layout { grid-template-columns: 1fr; }
+}
+
+.grid-layout {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px;
+}
+
+.card {
+    background: var(--card-bg);
+    border-radius: 15px; overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: 0.4s;
+}
+.card:hover {
+    transform: translateY(-50px);
+    border-color: var(--accent);
+    background: rgba(255, 107, 0, 0.05);
+}
+
+.tag { font-size: 0.65rem; color: var(--accent); font-weight: 700; text-transform: uppercase; margin-bottom: 10px; display: block; }
+
+/* Pie de página */
+footer { padding: 60px 5%; text-align: center; border-top: 1px solid rgba(255, 107, 0, 0.1); }
+.social-links a { color: white; font-size: 1.4rem; margin: 0 15px; transition: 0.3s; }
+.social-links a:hover { color: var(--accent); transform: scale(1.2); }
+.copy { font-size: 0.8rem; color: var(--text-dim); margin-top: 20px; }
+
+/* Responsivo */
+@media (max-width: 1024px) { .grid-layout { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 768px) {
+    .hero-content { grid-template-columns: 1fr; text-align: center; }
+    .hero-visual { display: none; }
+    .grid-layout { grid-template-columns: 1fr; }
+}
+
+/* --- SECCIÓN DE TRABAJOS (Aquí está el arreglo) --- */
+.work-section { padding: 100px 5%; }
+.grid-layout { display: grid; grid-template-columns: repeat(2, 1fr); gap: 5px; }
+
+.card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.05);
+    position: relative; /* Para que el texto no se mueva */
+    transition: 0.3s;
+}
+
+/* El contenedor de la imagen tiene un tamaño fijo */
+.image-wrapper {
+    width: 100%;
+    height: 400px;
+    position: relative;
+    border-radius: 12px 12px 0 0;
+}
+
+.card-image {
+    width: 100%;
+    height: 80%;
+    object-fit: cover;
+    border-radius: 12px 12px 0 0;
+    transition: all 0.8s ease;
+    cursor: pointer;
+}
+
+/* EL EFECTO: La imagen se sale del contenedor hacia arriba y lados */
+.card:hover .card-image {
+    transform: scale(1.5); /* Se agranda */
+    z-index: 100;
+    position: absolute;
+    top: -35px; /* Sube un poco para que se vea que flota */
+    border-radius: 8px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.9), 0 0 20px rgba(255,107,0,0.4);
+}
+
+.card-body { padding: 20px; }
+.tag { color: var(--accent); font-size: 0.7rem; font-weight: bold; text-transform: uppercase; }
+.card h3 { margin: 5px 0; font-size: 1.1rem; }
+.card p { color: var(--text-dim); font-size: 0.85rem; }
+
+.card:hover { border-color: var(--accent); }
+
+
+/* Estilos para el efecto de abrir en pantalla completa */
+.card-link { text-decoration: none; display: block; }
+
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.95);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.modal-overlay:target {
+    display: flex;
+}
+
+.modal-box {
+    position: relative;
+    max-width: 80%;
+    max-height: 80%;
+}
+
+.modal-box img {
+    max-width: 100%;
+    max-height: 80vh;
+    border: 2px solid var(--accent);
+}
+
+.close-modal {
+    position: absolute;
+    top: -50px;
+    right: 0;
+    color: white;
+    font-size: 1.5rem;
+    text-decoration: none;
+    background: var(--accent);
+    padding: 5px 15px;
+    border-radius: 5px;
+}
+
+
+.ct-card:hover {
+    border-color: var(--accent);
+    background: rgba(255, 107, 0, 0.05);
+    transform: translateY(-5px);
+}
+
+@media (max-width: 768px) {
+    .ct-container {
+        grid-template-columns: 1fr !important;
+    }
+}
